@@ -27,12 +27,13 @@ public class DBRun {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@jasmine.cs.vcu.edu:20037:xe", "huangat2", "V00800816");
             stmt = con.createStatement();
-            String input = scanner.nextLine(); //Reads input for query
-            String filtered=filter.Filter(input); //Filters input for characters used in SQL Injections 
-            rs = stmt.executeQuery("SELECT * FROM drugs");
+           // String input = scanner.nextLine(); //Reads input for query
+           // String filtered=filter.Filter(input); //Filters input for characters used in SQL Injections 
+            rs = stmt.executeQuery("SELECT * FROM drug_Names");
             while(rs.next()) {
-                System.out.print(rs.getInt(1) + "\t");
-                System.out.println(rs.getString(2));
+               // System.out.print(rs.getString(1) + "\t");
+                System.out.print(rs.getString(2)  + "\t");
+                System.out.println(rs.getString(3));
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
