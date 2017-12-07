@@ -32,8 +32,8 @@ public class DBRun {
             rs = stmt.executeQuery("SELECT * FROM drug_Names");
             while(rs.next()) {
                // System.out.print(rs.getString(1) + "\t");
-                System.out.print(rs.getString(2)  + "\t");
-                System.out.println(rs.getString(3));
+                System.out.println(rs.getString("Brand_Name")  + "\t");
+               // System.out.println(rs.getString(3));
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
