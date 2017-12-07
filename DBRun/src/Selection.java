@@ -24,6 +24,20 @@ public class Selection {
          }
     }
     
-    //public int getColumn()
+    public int getColumn(String str)
+    { int cNum = 0; String temp = "";
+    
+       Scanner scanner=new Scanner(str);
+       
+       while (scanner.hasNext())
+       {
+           temp = scanner.next();
+           if(temp.equalsIgnoreCase("*")){}
+       }
+     
+        
+    
+    return cNum;
+    }
     
 }
