@@ -37,8 +37,8 @@ public class GUI {
  guiFrame.setLocationRelativeTo(null);
  
  //Options for the JComboBox 
- String[] DBMSOptions = {"Pull Info", "Insert Info", "Delete Info"
- ,"Something else"};
+ String[] DBMSOptions = {"Drug Names", "Drug Fuctions", "Drug Class"
+ ,"Drug Dosing"};
  
 // //Options for the JList
 // String[] vegOptions = {"Asparagus", "Beans", "Broccoli", "Cabbage"
@@ -48,11 +48,11 @@ public class GUI {
  
  //The first JPanel contains a JLabel and JCombobox
  final JPanel comboPanel = new JPanel();
- JLabel comboLbl = new JLabel("DBMS Options:");
- JComboBox fruits = new JComboBox(DBMSOptions);
+ JLabel optionPage = new JLabel("Available Tables:");
+ JComboBox Tables = new JComboBox(DBMSOptions);
  
- comboPanel.add(comboLbl);
- comboPanel.add(fruits);
+ comboPanel.add(optionPage);
+ comboPanel.add(Tables);
  
  //Create the second JPanel. Add a JLabel and JList and
  //make use the JPanel is not visible.
@@ -65,13 +65,15 @@ public class GUI {
 // listPanel.add(listLbl);
 // listPanel.add(vegs);
  
- JButton vegFruitBut = new JButton( "Comfirm Selection");
+ JButton pullInfo = new JButton( "Pull Informations");
+ JButton insertInfo = new JButton( "Insert Informations");
+ JButton delInfo = new JButton( "Delet Informations");
  
  //The ActionListener class is used to handle the
  //event that happens when the user clicks the button.
  //As there is not a lot that needs to happen we can 
  //define an anonymous inner class to make the code simpler.
- vegFruitBut.addActionListener(new ActionListener()
+ pullInfo.addActionListener(new ActionListener()
  {
  @Override
  public void actionPerformed(ActionEvent event)
@@ -90,7 +92,7 @@ public class GUI {
  //Put the two JPanels and JButton in different areas.
  guiFrame.add(comboPanel, BorderLayout.NORTH);
 // guiFrame.add(listPanel, BorderLayout.CENTER);
- guiFrame.add(vegFruitBut,BorderLayout.SOUTH);
+ guiFrame.add(pullInfo,BorderLayout.SOUTH);
  
  //make sure the JFrame is visible
  guiFrame.setVisible(true);
