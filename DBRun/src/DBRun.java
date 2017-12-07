@@ -13,11 +13,14 @@ import java.util.Scanner;
 public class DBRun {
     
     public static void main(String[] args) {
+        
+        GUI ui = new GUI();
+        
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
-        InputFilter filter= new InputFilter();
-        Scanner scanner=new Scanner(System.in);
+    //    InputFilter filter= new InputFilter();
+    //    Scanner scanner=new Scanner(System.in);
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection("jdbc:oracle:thin:@jasmine.cs.vcu.edu:20037:xe", "huangat2", "V00800816");
