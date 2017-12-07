@@ -1,4 +1,6 @@
-
+/**
+ * @author Peter
+ */
 public class InputFilter {
 	public String Filter(String input) {
 

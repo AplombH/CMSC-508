@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Aplomb Huang && Peter Trand
+ * CMSC 508 PROJECT
  */
 
 import java.sql.Connection;
@@ -11,10 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-/**
- *
- * @author Aplomb
- */
 public class DBRun {
     
     public static void main(String[] args) {
