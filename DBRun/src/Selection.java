@@ -1,43 +1,45 @@
 /**
- * @author APLOMB 
+ *
+ * @author Aplomb
  */
-
-import java.util.Scanner;
 
 public class Selection {
     
-    private String C_select = "Select";
-    private String C_all = "*";
-    private String choice1 = "";
-    private String choice2 = "";
+    private String b_Name = "";
+    private String g_Name = "";
+    private String c_Name = "";
+    private String function = "";
+    private String dosing = "";
+    private String cmd = "";
     
-   
     
     public Selection(){}
     
-    public Selection (String str)
+    public String cmdOut()
     {
-         Scanner scanner=new Scanner(str);
-         if (scanner.next().equals("Select"))
-         {
-             
-         }
+        return cmd;
     }
     
-    public int getColumn(String str)
-    { int cNum = 0; String temp = "";
+    public void setBrand(String str){b_Name = str;}
     
-       Scanner scanner=new Scanner(str);
-       
-       while (scanner.hasNext())
-       {
-           temp = scanner.next();
-           if(temp.equalsIgnoreCase("*")){}
-       }
-     
-        
+    public void setGeneric(String str){g_Name = str;}
     
-    return cNum;
+    public void setClass (String str){c_Name = str;}
+    
+    public void setFunction(String str){function = str;}
+    
+    public void setDosing (String str){dosing = str;}
+    
+    public String searchQ(String str)
+    {
+        return cmd;
     }
     
+    public String delQ(String str)
+    {return cmd;}
+    
+    public String action(String str1, String str2)
+    {
+        return cmd;
+    }
 }

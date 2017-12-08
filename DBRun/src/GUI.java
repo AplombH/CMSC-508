@@ -20,6 +20,8 @@ public class GUI extends JFrame implements ActionListener
 {
     private JPanel panel1, panel2, panel3;
     
+      private String defalt = "Select * from show_all";
+    
 JTextField txtInput = new JTextField("");
 
 private String input1, input2, input3, input4, input5;
@@ -93,10 +95,15 @@ public GUI()
 
 // panel1.setVisible(!panel1.isVisible());
  
-        input1 = JOptionPane.showInputDialog(panel1, "If input box is empty, default will dispaly all", "input for  Select statement",
+       input1 = JOptionPane.showInputDialog(panel1, "If input box is empty, default will dispaly all", "input for  Select statement",
         JOptionPane.PLAIN_MESSAGE);
+        
+        String str;
       
-        RunDB db1 = new RunDB("Select * from show_all");
+        if(input1.equals("")|| input1.equals(null)){str = defalt;}
+        else{str = input1;}
+        
+        RunDB db1 = new RunDB(str);
         
         panel2.setVisible(!panel2.isVisible());     
  }
@@ -106,16 +113,36 @@ public GUI()
  {
  @Override
  public void actionPerformed(ActionEvent event)
- {      input1 = JOptionPane.showInputDialog(panel1, "Enter Drug's Brand Name", "Insert Input Box1",
+ {   Selection insert = new Selection();  
+ 
+     input1 = JOptionPane.showInputDialog(panel1, "Enter Drug's Brand Name", "Insert Input Box1",
          JOptionPane.PLAIN_MESSAGE);
+         
+         insert.setBrand(input1);
+ 
         input2 = JOptionPane.showInputDialog(panel1, "Enter Drug's Generic Name", "Insert Input Box2",
         JOptionPane.PLAIN_MESSAGE);
+        
+        insert.setGeneric(input2);
+        
         input3 = JOptionPane.showInputDialog(panel1, "Enter Drug Class", "Insert Input Box3",
         JOptionPane.PLAIN_MESSAGE);
+        
+        insert.setClass(input3);
+        
         input4 = JOptionPane.showInputDialog(panel1, "Enter Drug Function", "Insert Input Box4",
         JOptionPane.PLAIN_MESSAGE);
+        
+        insert.setFunction(input4);
+        
         input5 = JOptionPane.showInputDialog(panel1, "Enter Drug's Dosing Info", "Insert Input Box5",
         JOptionPane.PLAIN_MESSAGE);
+        
+        insert.setDosing(input5);
+        
+        String str = insert.cmdOut();
+        
+        RunDB db1 = new RunDB(str);
         
         panel2.setVisible(!panel2.isVisible());
  }
@@ -125,20 +152,43 @@ public GUI()
  {
  @Override
  public void actionPerformed(ActionEvent event)
- {      input1 = JOptionPane.showInputDialog(panel1, "Enter Drug's Name", "Update Input Box",
+ {     Selection update = new Selection();
+     
+     input1 = JOptionPane.showInputDialog(panel1, "Enter Drug's Name", "Update Input Box",
          JOptionPane.PLAIN_MESSAGE);
+     
+     String str = update.searchQ(input1);
+     
+     RunDB db1 = new RunDB(str);
  
           input1 = JOptionPane.showInputDialog(panel1, "Enter Drug's Brand Name", "Update Input Box1",
          JOptionPane.PLAIN_MESSAGE);
  
+          update.setBrand(input1);
+          
         input2 = JOptionPane.showInputDialog(panel1, "Enter Drug's Generic Name", "Update Input Box2",
         JOptionPane.PLAIN_MESSAGE);
+        
+        update.setGeneric(input2);
+        
         input3 = JOptionPane.showInputDialog(panel1, "Enter Drug Class", "Update Input Box3",
         JOptionPane.PLAIN_MESSAGE);
+        
+        update.setClass(input3);
+        
         input4 = JOptionPane.showInputDialog(panel1, "Enter Drug Function", "Update Input Box4",
         JOptionPane.PLAIN_MESSAGE);
+        
+        update.setFunction(input4);
+        
         input5 = JOptionPane.showInputDialog(panel1, "Enter Drug's Dosing Info", "Update Input Box5",
         JOptionPane.PLAIN_MESSAGE);
+        
+        update.setDosing(input5);
+        
+        str = update.cmdOut();
+        
+        RunDB db2 = new RunDB(str);
         
         panel2.setVisible(!panel2.isVisible());
  }
@@ -149,9 +199,14 @@ public GUI()
  @Override
  public void actionPerformed(ActionEvent event)
  {
+        Selection delete = new Selection();     
   
         input1 = JOptionPane.showInputDialog(panel1, "Delete", "input for  Deletion",
         JOptionPane.PLAIN_MESSAGE);
+        
+      String str = delete.searchQ(input1);
+      
+      RunDB db1 = new RunDB(str);
       
         panel2.setVisible(!panel2.isVisible());     
  }
@@ -162,12 +217,20 @@ public GUI()
  @Override
  public void actionPerformed(ActionEvent event)
  { 
+     Selection interact = new Selection();
+     
         input1 = JOptionPane.showInputDialog(panel1, "Enter Drug1", "input for  Drug interaction",
         JOptionPane.PLAIN_MESSAGE);
+        
+        interact.searchQ(input1);
+        
          input2 = JOptionPane.showInputDialog(panel1, "Enter Drug 2", "input for Drug interaction",
         JOptionPane.PLAIN_MESSAGE);
-        
-      
+         
+        String str = interact.action(input1, input2);
+         
+         RunDB db1 = new RunDB(str);
+         
         panel2.setVisible(!panel2.isVisible());     
  }
  });
@@ -190,32 +253,8 @@ public GUI()
       //  System.out.println(input);
     }
   
-//  public void windowInput(){
-//        input1 = JOptionPane.showInputDialog(this, "Message", "Title",
-//        JOptionPane.PLAIN_MESSAGE);}
- 
 }
 
-//            JTextArea textArea = new JTextArea();
-//            textArea.setEditable(true);
-//            JScrollPane scrollPane = new JScrollPane(textArea);
-//            scrollPane.requestFocus();
-//            textArea.requestFocusInWindow();
-//            scrollPane.setPreferredSize(new Dimension(800, 600));
-//            JOptionPane.showMessageDialog(
-//                    (ControlWindow) App.controller.control, scrollPane,
-//                    "Paste Info", JOptionPane.PLAIN_MESSAGE);
-//            String info = textArea.getText();
-
-    
-
-
-  //
-
-//    @Override
-//    public void actionPerformed(ActionEvent ae) {
-//        //To change body of generated methods, choose Tools | Templates.
-//    }
     
     
     
