@@ -1,53 +1,61 @@
-import java.sql.DriverManager;
+/**
+ * @author Aplomb Huang && Peter Trand
+ * CMSC 508 PROJECT
+ */
+
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
 
-public class RunDB { 
-
-    public static void main(String[] argv) {
-        
-        
+public class RunDB {
     
-
-        System.out.println("-------- Oracle JDBC Connection Testing ------");
-
+    public RunDB(String str){
+              
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        
         try {
-
             Class.forName("oracle.jdbc.driver.OracleDriver");
-
+            con = DriverManager.getConnection("jdbc:oracle:thin:@jasmine.cs.vcu.edu:20037:xe", "huangat2", "V00800816");
+            stmt = con.createStatement();
+          
+            rs = stmt.executeQuery(str);
+           
+          ResultSetMetaData metadata = rs.getMetaData();
+          int columnCount = metadata.getColumnCount();
+          for (int i=2; i<=columnCount; i++) 
+            {
+           String columnName = metadata.getColumnName(i);
+          System.out.print(columnName + "\t");
+          
+            }
+           System.out.println();  
+            while(rs.next()) {
+              
+                for (int i = 2; i <= columnCount; i++) {
+                        System.out.print(rs.getString(i) + "\t");    
+                    }
+                System.out.println();
+      
+            }
         } catch (ClassNotFoundException e) {
-
-            System.out.println("Where is your Oracle JDBC Driver?");
             e.printStackTrace();
-            return;
-
-        }
-
-        System.out.println("Oracle JDBC Driver Registered!");
-
-        Connection connection = null;
-
-        try {
-
-            connection = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@jasmine.cs.vcu.edu:20037:xe", "huangat2","V00800816");
-
         } catch (SQLException e) {
-
-            System.out.println("Connection Failed! Check output console");
             e.printStackTrace();
-            return;
-
-        }
-
-        if (connection != null) {
-            System.out.println("You made it, take control your database now!");
-        } else {
-            System.out.println("Failed to make connection!");
+        } finally {
+            try {
+                rs.close();
+                stmt.close();
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-}
-
-
     
-
+}
